@@ -1,6 +1,5 @@
 package com.sangjin.delicious.controller.board;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +19,7 @@ public class BoardController {
 	
 	private final BoardService boardService;
 	
-	public BoardController(@Lazy BoardService boardService) {
+	public BoardController(BoardService boardService) {
 		this.boardService = boardService;
 	}
 	

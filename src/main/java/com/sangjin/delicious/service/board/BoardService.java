@@ -2,7 +2,6 @@ package com.sangjin.delicious.service.board;
 
 import java.util.*;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.sangjin.delicious.dto.board.BoardList;
@@ -15,7 +14,7 @@ public class BoardService {
 
 	private final BoardMapper boardMapper;
 	
-	public BoardService(@Lazy BoardMapper boardMapper) {
+	public BoardService(BoardMapper boardMapper) {
 		this.boardMapper = boardMapper;
 	}
 	
