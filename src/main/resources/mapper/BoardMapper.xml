@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sangjin.delicious.mapper.BoardMapper">
+<insert id="insertPost">
+    INSERT
+      INTO dev_test.cms__article
+    (
+      board_id, created_datetime, title,
+      content_html, content_string
+    )
+    VALUES
+    (
+      #{boardId}, now(), #{title},
+      #{content}, #{content} 
+    )
+</insert>
+<insert id="insertPost2">
+    INSERT
+      INTO dev_test.cms__board
+    (
+      name_ko
+    )
+    VALUES
+    (
+      #{nameKo}
+    )
+</insert>
+<select id="getBoardId" resultType="_int">
+    SELECT
+    	   board_id
+      FROM dev_test.cms__board
+     ORDER BY board_id DESC
+     LIMIT 1
+</select>
+<select id="boardList" resultType="com.sangjin.delicious.dto.board.BoardList">
+    SELECT 
+    	   article_id AS articleId,
+    	   title,
+    	   view_count AS viewCount,
+    	   is_pinned AS isPinned,
+    	   created_datetime AS createdDateTime
+      FROM dev_test.cms__article
+</select>
+
+<delete id="deletePost">
+    DELETE
+      FROM dev_test.cms__article
+ 	 WHERE article_id = #{articleId}
+</delete>
+
+<update id="viewCountUpdate">
+    UPDATE dev_test.cms__article
+       SET view_count = #{viewCount}
+     WHERE article_id = #{articleId}
+</update>
+
+<select id="getViewCount" resultType="_int">
+    SELECT
+     	   view_count
+      FROM dev_test.cms__article
+     WHERE article_id = #{articleId}
+</select>
+
+<select id="boardRetrieve" resultType="BoardRetrieve">
+	SELECT
+		   article_id AS articleId,
+		   title,
+		   view_count AS viewCount,
+		   is_pinned AS isPinned,
+		   created_datetime AS createdDatetime
+	  FROM dev_test.cms__article
+	 WHERE article_id = #{articleId}
+</select>
+
+<select id="getBoardId2" resultType="_int">
+    SELECT
+    	   board_id
+      FROM dev_test.cms__board
+     WHERE name_ko LIKE CONCAT('%', #{nameKo}, '%')
+</select>
+
+<select id="searchBoardList" resultType="BoardList">
+    SELECT
+    	   article_id AS articleId,
+    	   title,
+    	   view_count AS viewCount,
+    	   is_pinned AS isPinned,
+    	   created_datetime AS createdDateTime
+      FROM dev_test.cms__article
+	 WHERE board_id = #{boardId}
+</select>
+
+</mapper>
