@@ -23,33 +23,40 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
-	@GetMapping("/list")
-	public ApiResponse BoardList() {
-	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardList());
+	@PostMapping()				//게시물 생성
+	public ApiResponse insertPost( 		       
+			@ModelAttribute InsertBoardDTO insertBoardDto) {
+		return new ApiResponse(ApiStatus.SUCCESS, boardService.insertPost(insertBoardDto));
 	}
 	
-	@GetMapping("/search")
-	public ApiResponse searchBoardList(
-			@RequestParam(value = "searchName", required = true) String searchName) {
-	return new ApiResponse(ApiStatus.SUCCESS, boardService.searchBoardList(searchName));
-	}
-	
-	@GetMapping()
+	@GetMapping("/detail")		//게시물 상세 조회
 	public ApiResponse boardRetrieve (
 			@RequestParam(value = "id", required = true) int articleId) {
 	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardRetrieve(articleId));
 	}
 	
-	@PostMapping()
-	public ApiResponse insertPost(
-			@ModelAttribute InsertBoardDTO insertBoardDto) {
-		return new ApiResponse(ApiStatus.SUCCESS, boardService.insertPost(insertBoardDto));
+	
+	@GetMapping()				//게시물 목록 조회
+	public ApiResponse BoardList() {			
+	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardList());
 	}
 	
-	@DeleteMapping()
+	@DeleteMapping()			//게시물 삭제
 	public ApiResponse deletePost(
 			@RequestParam(value = "id", required = true) int articleId) {
 		return new ApiResponse(ApiStatus.SUCCESS, boardService.deletePost(articleId));
 	}
 	
+	@GetMapping("/search")		//게시물 검색
+	public ApiResponse searchBoardList(
+			@RequestParam(value = "searchName", required = true) String searchName) {
+	return new ApiResponse(ApiStatus.SUCCESS, boardService.searchBoardList(searchName));
+	}
+	
+	@GetMapping("/search/period")		//게시물 기간 검색
+	public ApiResponse searchBoardPeriod(
+			@RequestParam(value = "fromDate", required = true) String fromDate,
+			@RequestParam(value = "toDate", required = true) String toDate) {
+	return new ApiResponse(ApiStatus.SUCCESS, boardService.searchBoardPeriod(fromDate, toDate));
+	}
 }

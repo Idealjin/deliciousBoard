@@ -74,13 +74,6 @@
 	 WHERE article_id = #{articleId}
 </select>
 
-<select id="getBoardId2" resultType="_int">
-    SELECT
-    	   board_id
-      FROM dev_test.cms__board
-     WHERE name_ko LIKE CONCAT('%', #{nameKo}, '%')
-</select>
-
 <select id="searchBoardList" resultType="BoardList">
     SELECT
     	   article_id AS articleId,
@@ -89,7 +82,19 @@
     	   is_pinned AS isPinned,
     	   created_datetime AS createdDateTime
       FROM dev_test.cms__article
-	 WHERE board_id = #{boardId}
+	 WHERE title LIKE CONCAT('%', #{searchName}, '%')
+</select>
+
+<select id="searchBoardPeriod" resultType="BoardList">
+	SELECT
+		   article_id AS articleId,
+    	   title,
+    	   view_count AS viewCount,
+    	   is_pinned AS isPinned,
+    	   created_datetime AS createdDateTime
+	  FROM dev_test.cms__article
+	 WHERE created_datetime <![CDATA[>= STR_TO_DATE(#{fromDate},'%Y-%m-%d %H:%i:%s') ]]>  
+	   AND created_datetime <![CDATA[<= STR_TO_DATE(#{toDate},'%Y-%m-%d %H:%i:%s') ]]> 
 </select>
 
 </mapper>

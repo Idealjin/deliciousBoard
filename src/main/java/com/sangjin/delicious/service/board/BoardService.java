@@ -77,9 +77,18 @@ public class BoardService {
 		
 		Map<String, List<BoardList>> result = new HashMap<>();
 		
-		int boardId = boardMapper.getBoardId2(searchName);
+		List<BoardList> searchResult = boardMapper.searchBoardList(searchName);
 		
-		List<BoardList> searchResult = boardMapper.searchBoardList(boardId);
+		result.put("searchResult", searchResult);
+		
+		return result;
+	}
+
+	public Object searchBoardPeriod(String fromDate, String toDate) {
+		
+		Map<String, List<BoardList>> result = new HashMap<>();
+		
+		List<BoardList> searchResult = boardMapper.searchBoardPeriod(fromDate, toDate);
 		
 		result.put("searchResult", searchResult);
 		

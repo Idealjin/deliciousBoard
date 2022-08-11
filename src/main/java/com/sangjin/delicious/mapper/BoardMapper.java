@@ -34,11 +34,12 @@ public interface BoardMapper {
 
 	int getBoardId();
 	
-	int getBoardId2(
-			@Param("nameKo") String searchName);
-
 	List<BoardList> searchBoardList(
-			@Param("boardId") int boardId);
+			@Param("searchName") String searchName);
+
+	List<BoardList> searchBoardPeriod(
+			@Param("fromDate") String fromDate, 
+			@Param("toDate") String toDate);
 
 
 }
