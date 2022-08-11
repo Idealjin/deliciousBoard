@@ -30,7 +30,7 @@ public class DataSourceConfig {
 			ApplicationContext applicationContext) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
-		sqlSessionFactoryBean.setTypeAliasesPackage("com.sangjin.delicious.dto.board");
+		sqlSessionFactoryBean.setTypeAliasesPackage("com.sangjin.delicious.domain");
 		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:mapper/*.xml"));
 		
 		return sqlSessionFactoryBean.getObject();

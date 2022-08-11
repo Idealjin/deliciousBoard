@@ -34,7 +34,7 @@
      ORDER BY board_id DESC
      LIMIT 1
 </select>
-<select id="boardList" resultType="com.sangjin.delicious.dto.board.BoardList">
+<select id="boardList" resultType="Article">
     SELECT 
     	   article_id AS articleId,
     	   title,
@@ -63,7 +63,7 @@
      WHERE article_id = #{articleId}
 </select>
 
-<select id="boardRetrieve" resultType="BoardRetrieve">
+<select id="boardRetrieve" resultType="com.sangjin.delicious.dto.board.BoardRetrieve">
 	SELECT
 		   article_id AS articleId,
 		   title,
@@ -74,7 +74,7 @@
 	 WHERE article_id = #{articleId}
 </select>
 
-<select id="searchBoardList" resultType="BoardList">
+<select id="searchBoardList" resultType="Article">
     SELECT
     	   article_id AS articleId,
     	   title,
@@ -85,7 +85,7 @@
 	 WHERE title LIKE CONCAT('%', #{searchName}, '%')
 </select>
 
-<select id="searchBoardPeriod" resultType="BoardList">
+<select id="searchBoardPeriod" resultType="Article">
 	SELECT
 		   article_id AS articleId,
     	   title,
