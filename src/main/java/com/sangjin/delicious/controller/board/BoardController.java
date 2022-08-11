@@ -13,15 +13,14 @@ import com.sangjin.delicious.common.ApiStatus;
 import com.sangjin.delicious.dto.board.InsertBoardDTO;
 import com.sangjin.delicious.service.board.BoardService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
+@AllArgsConstructor
 @RequestMapping("/board")
 public class BoardController {
 	
 	private final BoardService boardService;
-	
-	public BoardController(BoardService boardService) {
-		this.boardService = boardService;
-	}
 	
 	@PostMapping()				//게시물 생성
 	public ApiResponse insertPost( 		       
@@ -59,4 +58,5 @@ public class BoardController {
 			@RequestParam(value = "toDate", required = true) String toDate) {
 	return new ApiResponse(ApiStatus.SUCCESS, boardService.searchBoardPeriod(fromDate, toDate));
 	}
+
 }

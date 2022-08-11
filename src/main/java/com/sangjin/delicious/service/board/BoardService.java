@@ -2,6 +2,8 @@ package com.sangjin.delicious.service.board;
 
 import java.util.*;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.sangjin.delicious.dto.board.BoardList;
@@ -9,17 +11,16 @@ import com.sangjin.delicious.dto.board.BoardRetrieve;
 import com.sangjin.delicious.dto.board.InsertBoardDTO;
 import com.sangjin.delicious.mapper.BoardMapper;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class BoardService {
 
 	private final BoardMapper boardMapper;
 	
-	public BoardService(BoardMapper boardMapper) {
-		this.boardMapper = boardMapper;
-	}
-	
+	@Transactional
 	public Map<String, Integer> insertPost(InsertBoardDTO insertBoardDto) {
-		
 		Map<String, Integer> result = new HashMap<>();
 		
 		String title = insertBoardDto.getTitle();
@@ -34,6 +35,7 @@ public class BoardService {
 		return result;
 	}
 
+	
 	public Map<String, List<BoardList>> boardList() {
 		
 		Map<String, List<BoardList>> result = new HashMap<>();
@@ -94,5 +96,5 @@ public class BoardService {
 		
 		return result;
 	}
-
+	
 }

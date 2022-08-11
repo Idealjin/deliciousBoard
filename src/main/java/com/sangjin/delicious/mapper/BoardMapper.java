@@ -3,14 +3,16 @@ package com.sangjin.delicious.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.sangjin.delicious.domain.Article;
 import com.sangjin.delicious.dto.board.BoardList;
 import com.sangjin.delicious.dto.board.BoardRetrieve;
 
-public interface BoardMapper {
+public interface BoardMapper{
 
 	int insertPost(
-			@Param("boardId") int boardId,
+			@Param("boardId") int boardId, 
 			@Param("title") String title,
 			@Param("content") String content);
 
