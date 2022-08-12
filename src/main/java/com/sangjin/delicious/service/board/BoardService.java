@@ -47,11 +47,11 @@ public class BoardService {
 		return result;
 	}
 
-	public Map<String, Integer> deletePost(int articleId) {
+	public Map<String, Integer> deletePost(int Id) {
 		
 		Map<String, Integer> result = new HashMap<>();
 		
-		int deleteResult = boardMapper.deletePost(articleId);
+		int deleteResult = boardMapper.deletePost(Id);
 		
 		result.put("deleteResult", deleteResult);
 		

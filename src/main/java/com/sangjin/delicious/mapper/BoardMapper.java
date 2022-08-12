@@ -3,6 +3,8 @@ package com.sangjin.delicious.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
+import com.sangjin.delicious.domain.Article;
 import com.sangjin.delicious.dto.board.BoardList;
 import com.sangjin.delicious.dto.board.BoardRetrieve;
 
@@ -40,5 +42,8 @@ public interface BoardMapper{
 			@Param("fromDate") String fromDate, 
 			@Param("toDate") String toDate);
 
+	void deleteAll();
 
+	List<Article> boardListTest();
+	
 }

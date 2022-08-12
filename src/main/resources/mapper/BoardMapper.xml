@@ -98,4 +98,16 @@
 	   AND created_datetime <![CDATA[<= STR_TO_DATE(#{toDate},'%Y-%m-%d %H:%i:%s') ]]> 
 </select>
 
+<delete id="deleteAll">
+    DELETE FROM dev_test.cms__article
+     WHERE article_id <![CDATA[>= 1 ]]>
+</delete>
+
+<select id="boardListTest" resultType="Article">
+    SELECT
+    	   title,
+    	   content_html AS contentHtml
+	  FROM dev_test.cms__article
+</select>
+
 </mapper>

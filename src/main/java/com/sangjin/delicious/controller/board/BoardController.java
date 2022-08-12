@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/board")
+@RequestMapping("/api/posts")
 public class BoardController {
 	
 	private final BoardService boardService;
@@ -30,8 +30,8 @@ public class BoardController {
 	
 	@GetMapping("/detail")		//게시물 상세 조회
 	public ApiResponse boardRetrieve (
-			@RequestParam(value = "id", required = true) int articleId) {
-	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardRetrieve(articleId));
+			@RequestParam(value = "id", required = true) int Id) {
+	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardRetrieve(Id));
 	}
 	
 	
@@ -42,8 +42,8 @@ public class BoardController {
 	
 	@DeleteMapping()			//게시물 삭제
 	public ApiResponse deletePost(
-			@RequestParam(value = "id", required = true) int articleId) {
-		return new ApiResponse(ApiStatus.SUCCESS, boardService.deletePost(articleId));
+			@RequestParam(value = "id", required = true) int Id) {
+		return new ApiResponse(ApiStatus.SUCCESS, boardService.deletePost(Id));
 	}
 	
 	@GetMapping("/search")		//게시물 검색

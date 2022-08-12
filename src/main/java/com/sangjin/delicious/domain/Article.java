@@ -36,7 +36,6 @@ public class Article {
 
 	@Column(name="content_string")
 	private String contentString;
-	
-	
+
 	
 }
