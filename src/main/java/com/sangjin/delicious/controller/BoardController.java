@@ -1,4 +1,4 @@
-package com.sangjin.delicious.controller.board;
+package com.sangjin.delicious.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sangjin.delicious.common.ApiResponse;
 import com.sangjin.delicious.common.ApiStatus;
-import com.sangjin.delicious.dto.board.InsertBoardDTO;
-import com.sangjin.delicious.service.board.BoardService;
+import com.sangjin.delicious.dto.InsertBoardDTO;
+import com.sangjin.delicious.service.BoardService;
 
 import lombok.AllArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.sangjin.delicious.service.board;
+package com.sangjin.delicious.service;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -8,9 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.sangjin.delicious.domain.Article;
-import com.sangjin.delicious.dto.board.BoardList;
-import com.sangjin.delicious.dto.board.BoardRetrieve;
-import com.sangjin.delicious.dto.board.InsertBoardDTO;
+import com.sangjin.delicious.dto.BoardList;
+import com.sangjin.delicious.dto.BoardRetrieve;
+import com.sangjin.delicious.dto.InsertBoardDTO;
 import com.sangjin.delicious.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;

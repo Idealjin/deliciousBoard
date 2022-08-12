@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.sangjin.delicious.domain.Article;
-import com.sangjin.delicious.dto.board.BoardList;
-import com.sangjin.delicious.dto.board.BoardRetrieve;
+import com.sangjin.delicious.dto.BoardList;
+import com.sangjin.delicious.dto.BoardRetrieve;
 
 public interface BoardMapper{
 

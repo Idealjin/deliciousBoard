@@ -1,4 +1,4 @@
-package com.sangjin.delicious.dto.board;
+package com.sangjin.delicious.dto;
 
 import lombok.Data;
 

@@ -8,7 +8,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import com.sangjin.delicious.dto.board.BoardList;
+import com.sangjin.delicious.dto.BoardList;
 
 public class BoardListTest {
 
