@@ -63,10 +63,11 @@
      WHERE article_id = #{articleId}
 </select>
 
-<select id="boardRetrieve" resultType="com.sangjin.delicious.dto.board.BoardRetrieve">
+<select id="boardRetrieve" resultType="Article">
 	SELECT
 		   article_id AS articleId,
 		   title,
+		   content_html AS contentHtml,
 		   view_count AS viewCount,
 		   is_pinned AS isPinned,
 		   created_datetime AS createdDatetime

@@ -12,5 +12,5 @@ public class BoardList {
 	private String title;
 	private int viewCount;
 	private int isPinned;
-	private Date createdDateTime;
+	private Date createdDatetime;
 }

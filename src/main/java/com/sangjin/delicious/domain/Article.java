@@ -19,7 +19,6 @@ public class Article {
 	
 	@Column(name="board_id")
 	private int boardId;
-
 	
 	@Column(name="created_datetime")
 	private Date createdDatetime;

@@ -21,17 +21,17 @@ public class BoardListTest {
 		int isPinned = 0;
 		
 		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date createdDateTime = dtFormat.parse("2022-08-10");
+		Date createdDatetime = dtFormat.parse("2022-08-10");
 		
 		//when
-		BoardList dto = new BoardList(articleId, title, viewCount, isPinned, createdDateTime);
+		BoardList dto = new BoardList(articleId, title, viewCount, isPinned, createdDatetime);
 		
 		//then
 		assertThat(dto.getArticleId()).isEqualTo(articleId);
 		assertThat(dto.getTitle()).isEqualTo(title);
 		assertThat(dto.getViewCount()).isEqualTo(viewCount);
 		assertThat(dto.getIsPinned()).isEqualTo(isPinned);
-		assertThat(dto.getCreatedDateTime()).isEqualTo(createdDateTime);
+		assertThat(dto.getCreatedDatetime()).isEqualTo(createdDatetime);
 	}
 	
 }

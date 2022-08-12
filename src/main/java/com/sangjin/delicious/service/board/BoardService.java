@@ -58,9 +58,9 @@ public class BoardService {
 		return result;
 	}
 
-	public Map<String, BoardRetrieve> boardRetrieve(int articleId) {
+	public Map<String, List<BoardRetrieve>> boardRetrieve(int articleId) {
 		
-		Map<String, BoardRetrieve> result = new HashMap<>();
+		Map<String, List<BoardRetrieve>> result = new HashMap<>();
 		
 		
 		int viewCount = boardMapper.getViewCount(articleId);
@@ -68,7 +68,7 @@ public class BoardService {
 		int viewCountUpdateResult = boardMapper.viewCountUpdate(viewCount, articleId);
 			
 		if(viewCountUpdateResult != 0) {
-			BoardRetrieve boardDetail = boardMapper.boardRetrieve(articleId);			
+			List<BoardRetrieve> boardDetail = boardMapper.boardRetrieve(articleId);			
 			result.put("boardDetail", boardDetail);
 		}
 		

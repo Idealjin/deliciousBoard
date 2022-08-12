@@ -3,9 +3,6 @@ package com.sangjin.delicious.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.sangjin.delicious.domain.Article;
 import com.sangjin.delicious.dto.board.BoardList;
 import com.sangjin.delicious.dto.board.BoardRetrieve;
 
@@ -24,7 +21,7 @@ public interface BoardMapper{
 	int deletePost(
 			@Param("articleId") int articleId);
 
-	BoardRetrieve boardRetrieve(
+	List<BoardRetrieve> boardRetrieve(
 			@Param("articleId") int articleId);
 
 	int viewCountUpdate(

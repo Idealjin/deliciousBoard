@@ -2,9 +2,13 @@ package com.sangjin.delicious.dto.board;
 
 import java.util.Date;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 public class BoardRetrieve {
 	private int articleId;
 	private String title;
