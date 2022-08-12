@@ -18,12 +18,12 @@ public interface BoardMapper{
 	int insertPost2(
 			@Param("nameKo") String nameKo);
 
-	List<BoardList> boardList();
-
+	List<Article> boardList();
+	
 	int deletePost(
 			@Param("articleId") int articleId);
 
-	List<BoardRetrieve> boardRetrieve(
+	List<Article> boardRetrieve(
 			@Param("articleId") int articleId);
 
 	int viewCountUpdate(
@@ -35,10 +35,10 @@ public interface BoardMapper{
 
 	int getBoardId();
 	
-	List<BoardList> searchBoardList(
+	List<Article> searchBoardList(
 			@Param("searchName") String searchName);
 
-	List<BoardList> searchBoardPeriod(
+	List<Article> searchBoardPeriod(
 			@Param("fromDate") String fromDate, 
 			@Param("toDate") String toDate);
 

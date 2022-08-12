@@ -1,11 +1,13 @@
 package com.sangjin.delicious.service.board;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.sangjin.delicious.domain.Article;
 import com.sangjin.delicious.dto.board.BoardList;
 import com.sangjin.delicious.dto.board.BoardRetrieve;
 import com.sangjin.delicious.dto.board.InsertBoardDTO;
@@ -20,81 +22,56 @@ public class BoardService {
 	private final BoardMapper boardMapper;
 	
 	@Transactional
-	public Map<String, Integer> insertPost(InsertBoardDTO insertBoardDto) {
-		Map<String, Integer> result = new HashMap<>();
-		
+	public String insertPost(InsertBoardDTO insertBoardDto) { 
 		String title = insertBoardDto.getTitle();
 		String content = insertBoardDto.getContent();
 		
+		//가장 최근에 만들어진 게시판 번호를 가져온다.
+		//게시판 여러개를 구현할때는 수정 필요
 		int boardId= boardMapper.getBoardId();
 		
 		int insertResult = boardMapper.insertPost(boardId, title, content);
 		
-		result.put("insertResult", insertResult);
-		
-		return result;
+		if(insertResult == 0) {
+			return "Insert Faild...";
+		}
+		return "Insert Success!";
 	}
 
 	
-	public Map<String, List<BoardList>> boardList() {
-		
-		Map<String, List<BoardList>> result = new HashMap<>();
-		
-		List<BoardList> boardList = boardMapper.boardList();
-		
-		result.put("boardList", boardList);
-		
-		return result;
+	public List<BoardList> boardList() {
+		List<Article> boardList = boardMapper.boardList();
+		return boardList.stream().map(BoardList::new).collect(Collectors.toList());
 	}
 
-	public Map<String, Integer> deletePost(int Id) {
-		
-		Map<String, Integer> result = new HashMap<>();
-		
+	public String deletePost(int Id) {
 		int deleteResult = boardMapper.deletePost(Id);
-		
-		result.put("deleteResult", deleteResult);
-		
-		return result;
+		if(deleteResult == 0) {
+			return "Delete Faild...";
+		}
+		return "Delete Success!";
 	}
 
-	public Map<String, List<BoardRetrieve>> boardRetrieve(int articleId) {
-		
-		Map<String, List<BoardRetrieve>> result = new HashMap<>();
-		
-		
+	public List<BoardRetrieve> boardRetrieve(int articleId) {
+	
+		//viewCount를 +1 해준다.
 		int viewCount = boardMapper.getViewCount(articleId);
 		viewCount+=1;
-		int viewCountUpdateResult = boardMapper.viewCountUpdate(viewCount, articleId);
-			
-		if(viewCountUpdateResult != 0) {
-			List<BoardRetrieve> boardDetail = boardMapper.boardRetrieve(articleId);			
-			result.put("boardDetail", boardDetail);
-		}
+		boardMapper.viewCountUpdate(viewCount, articleId);
 		
-		return result;
+		List<Article> boardDetail = boardMapper.boardRetrieve(articleId);			
+		return boardDetail.stream().map(BoardRetrieve::new).collect(Collectors.toList());
+		
 	}
 
-	public Map<String, List<BoardList>> searchBoardList(String searchName) {
-		
-		Map<String, List<BoardList>> result = new HashMap<>();
-		
-		List<BoardList> searchResult = boardMapper.searchBoardList(searchName);
-		
-		result.put("searchResult", searchResult);
-		
-		return result;
+	public List<BoardList> searchBoardList(String searchName) {
+		List<Article> searchResult = boardMapper.searchBoardList(searchName);
+		return searchResult.stream().map(BoardList::new).collect(Collectors.toList());
 	}
 
-	public Object searchBoardPeriod(String fromDate, String toDate) {
-		
-		Map<String, List<BoardList>> result = new HashMap<>();
-		
-		List<BoardList> searchResult = boardMapper.searchBoardPeriod(fromDate, toDate);
-		
-		result.put("searchResult", searchResult);
-		
-		return result;
+	public List<BoardList> searchBoardPeriod(String fromDate, String toDate) {
+		List<Article> searchResult = boardMapper.searchBoardPeriod(fromDate, toDate);
+		return searchResult.stream().map(BoardList::new).collect(Collectors.toList());
 	}
 	
 }
