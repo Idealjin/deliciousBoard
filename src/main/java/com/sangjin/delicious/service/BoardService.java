@@ -44,6 +44,7 @@ public class BoardService {
 		return boardList.stream().map(BoardList::new).collect(Collectors.toList());
 	}
 
+	@Transactional
 	public String deletePost(int Id) {
 		int deleteResult = boardMapper.deletePost(Id);
 		if(deleteResult == 0) {
