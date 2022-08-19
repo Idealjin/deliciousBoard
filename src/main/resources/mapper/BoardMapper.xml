@@ -52,7 +52,7 @@
 
 <update id="viewCountUpdate">
     UPDATE dev_test.cms__article
-       SET view_count = #{viewCount}
+       SET view_count = view_count + 1
      WHERE article_id = #{articleId}
 </update>
 
