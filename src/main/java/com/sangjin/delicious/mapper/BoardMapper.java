@@ -27,7 +27,6 @@ public interface BoardMapper{
 			@Param("articleId") int articleId);
 
 	int viewCountUpdate(
-			@Param("viewCount") int viewCount,
 			@Param("articleId") int articleId);
 
 	int getViewCount(
