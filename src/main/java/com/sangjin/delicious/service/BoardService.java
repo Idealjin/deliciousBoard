@@ -26,8 +26,8 @@ public class BoardService {
 		String title = insertBoardDto.getTitle();
 		String content = insertBoardDto.getContent();
 		
-		//°¡Àå ÃÖ±Ù¿¡ ¸¸µé¾îÁø °Ô½ÃÆÇ ¹øÈ£¸¦ °¡Á®¿Â´Ù.
-		//°Ô½ÃÆÇ ¿©·¯°³¸¦ ±¸ÇöÇÒ¶§´Â ¼öÁ¤ ÇÊ¿ä
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
+		//ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
 		int boardId= boardMapper.getBoardId();
 		
 		int insertResult = boardMapper.insertPost(boardId, title, content);
@@ -55,10 +55,8 @@ public class BoardService {
 
 	public List<BoardRetrieve> boardRetrieve(int articleId) {
 	
-		//viewCount¸¦ +1 ÇØÁØ´Ù.
-		int viewCount = boardMapper.getViewCount(articleId);
-		viewCount+=1;
-		boardMapper.viewCountUpdate(viewCount, articleId);
+		//viewCountï¿½ï¿½ +1 ï¿½ï¿½ï¿½Ø´ï¿½
+		boardMapper.viewCountUpdate(articleId);
 		
 		List<Article> boardDetail = boardMapper.boardRetrieve(articleId);			
 		return boardDetail.stream().map(BoardRetrieve::new).collect(Collectors.toList());
