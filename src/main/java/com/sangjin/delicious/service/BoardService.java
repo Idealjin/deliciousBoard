@@ -26,8 +26,6 @@ public class BoardService {
 		String title = insertBoardDto.getTitle();
 		String content = insertBoardDto.getContent();
 		
-		//가장 최근에 만들어진 게시판 번호를 가져온다.
-		//게시판 여러개를 구현할때는 수정 필요
 		int boardId= boardMapper.getBoardId();
 		
 		int insertResult = boardMapper.insertPost(boardId, title, content);
@@ -53,11 +51,8 @@ public class BoardService {
 	}
 
 	public List<BoardRetrieve> boardRetrieve(int articleId) {
-	
-		//viewCount를 +1 해준다.
-		int viewCount = boardMapper.getViewCount(articleId);
-		viewCount+=1;
-		boardMapper.viewCountUpdate(viewCount, articleId);
+
+		boardMapper.viewCountUpdate(articleId);
 		
 		List<Article> boardDetail = boardMapper.boardRetrieve(articleId);			
 		return boardDetail.stream().map(BoardRetrieve::new).collect(Collectors.toList());
