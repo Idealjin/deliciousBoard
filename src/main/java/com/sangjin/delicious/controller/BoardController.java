@@ -22,37 +22,37 @@ public class BoardController {
 	
 	private final BoardService boardService;
 	
-	@PostMapping()				//°Ô½Ã¹° »ı¼º
+	@PostMapping()		//ê²Œì‹œê¸€ ìƒì„±
 	public ApiResponse insertPost( 		       
 			@ModelAttribute InsertBoardDTO insertBoardDto) {
 		return new ApiResponse(ApiStatus.SUCCESS, boardService.insertPost(insertBoardDto));
 	}
 	
-	@GetMapping("/detail")		//°Ô½Ã¹° »ó¼¼ Á¶È¸
+	@GetMapping("/detail")		//ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸°
 	public ApiResponse boardRetrieve (
 			@RequestParam(value = "id", required = true) int Id) {
 	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardRetrieve(Id));
 	}
 	
 	
-	@GetMapping()				//°Ô½Ã¹° ¸ñ·Ï Á¶È¸
+	@GetMapping()				//ê²Œì‹œê¸€ ëª©ë¡ ì¡°íšŒ
 	public ApiResponse BoardList() {			
 	return new ApiResponse(ApiStatus.SUCCESS, boardService.boardList());
 	}
 	
-	@DeleteMapping()			//°Ô½Ã¹° »èÁ¦
+	@DeleteMapping()			//ê²Œì‹œê¸€ ì‚­ì œ
 	public ApiResponse deletePost(
 			@RequestParam(value = "id", required = true) int Id) {
 		return new ApiResponse(ApiStatus.SUCCESS, boardService.deletePost(Id));
 	}
 	
-	@GetMapping("/search")		//°Ô½Ã¹° °Ë»ö
+	@GetMapping("/search")		//ê²Œì‹œê¸€ ê²€ìƒ‰
 	public ApiResponse searchBoardList(
 			@RequestParam(value = "searchName", required = true) String searchName) {
 	return new ApiResponse(ApiStatus.SUCCESS, boardService.searchBoardList(searchName));
 	}
 	
-	@GetMapping("/search/period")		//°Ô½Ã¹° ±â°£ °Ë»ö
+	@GetMapping("/search/period")		//ê²Œì‹œê¸€ ê¸°ê°„ìœ¼ë¡œ ê²€ìƒ‰
 	public ApiResponse searchBoardPeriod(
 			@RequestParam(value = "fromDate", required = true) String fromDate,
 			@RequestParam(value = "toDate", required = true) String toDate) {

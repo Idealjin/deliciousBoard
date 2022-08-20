@@ -24,10 +24,10 @@ public class BoardMapperTest {
 	}
 	
 	@Test
-	public void °Ô½Ã±ÛÀúÀå_ºÒ·¯¿À±â() {
+	public void ê²Œì‹œê¸€ì €ì¥_ë¶ˆëŸ¬ì˜¤ê¸°() {
 		//given
-		String title = "Å×½ºÆ® °Ô½Ã±Û";
-		String content = "Å×½ºÆ® º»¹®";
+		String title = "í…ŒìŠ¤íŠ¸ ì œëª©";
+		String content = "í…ŒìŠ¤íŠ¸ ë‚´ìš©";
 		int boardId = 1;
 		boardMapper.insertPost(boardId, title, content);
 		

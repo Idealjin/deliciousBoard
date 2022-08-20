@@ -6,14 +6,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
-
 import com.sangjin.delicious.dto.BoardList;
+import org.junit.jupiter.api.Test;
 
 public class BoardListTest {
 
 	@Test
-	public void BoardList_DTO_�׽�Ʈ() throws ParseException {
+	public void BoardList_DTO_테스트() throws ParseException {
 		//given
 		int articleId = 1;
 		String title = "test";
